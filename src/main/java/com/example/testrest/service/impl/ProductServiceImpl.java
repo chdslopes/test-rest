@@ -1,5 +1,6 @@
 package com.example.testrest.service.impl;
 
+import com.example.testrest.feign.FeignTest;
 import com.example.testrest.model.Product;
 import com.example.testrest.repository.ProductRepository;
 import com.example.testrest.service.ProductService;

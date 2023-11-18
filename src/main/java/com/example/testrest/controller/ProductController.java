@@ -1,5 +1,6 @@
 package com.example.testrest.controller;
 
+import com.example.testrest.feign.FeignTest;
 import com.example.testrest.model.Product;
 import com.example.testrest.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,12 @@ import java.util.Optional;
 public class ProductController {
 
     private final ProductService productService;
+    private final FeignTest feignTest;
+
+    @GetMapping("/feign-test")
+    public ResponseEntity<String> fingIp(){
+        return ResponseEntity.status(HttpStatus.OK).body(feignTest.getPostById().getIp());
+    }
 
     @GetMapping
     public ResponseEntity<List<Product>> findAll(){
@@ -41,4 +48,6 @@ public class ProductController {
         productService.deleteById(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+
 }
